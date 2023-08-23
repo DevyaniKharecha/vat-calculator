@@ -1,0 +1,34 @@
+/* public/css/styles.css */
+
+/* Adjust margins and padding for better spacing */
+.container {
+    margin-top: 50px;
+}
+
+/* Increase the font size for headings */
+h2 {
+    font-size: 24px;
+}
+
+/* Add some spacing for the calculation history table */
+table {
+    margin-top: 20px;
+}
+
+/* Add space between table cells */
+th, td {
+    padding: 8px;
+}
+
+/* Center the "Calculate" button */
+button {
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Center the "Clear History" button */
+form.mt-3 {
+    text-align: center;
+}

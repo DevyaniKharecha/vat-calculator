@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="mb-4">VAT Calculator</h2>
+        <form method="post">
+            <div class="mb-3">
+                <label for="amount" class="form-label">Amount:</label>
+                <input type="number" name="amount" class="form-control" required step="0.01">
+            </div>
+            <div class="mb-3">
+                <label for="vat_rate" class="form-label">VAT Rate (%):</label>
+                <input type="number" name="vat_rate" class="form-control" required step="0.01">
+            </div>
+        
+            <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
+
+        <h2 class="mt-5">Calculation History</h2>
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>Amount</th>
+                    <th>VAT Rate</th>
+                    <th>VAT Amount</th>
+                    <th>Total Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in history %}
+                    <tr>
+                        <td>{{ entry.amount }}</td>
+                        <td>{{ entry.vatRate }}</td>
+                        <td>{{ entry.vatAmount }}</td>
+                        <td>{{ entry.totalAmount }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <form method="post" action="{{ path('clear_history') }}" class="mt-3">
+            <button type="submit" class="btn btn-danger">Clear History</button>
+        </form>
+        <form method="get" action="{{ path('calculate_vat') }}">
+            <input type="hidden" name="export_csv" value="1">
+            <button type="submit" class="btn btn-success mt-3">Export to CSV</button>
+        </form>
+
+    </div>
+{% endblock %}
